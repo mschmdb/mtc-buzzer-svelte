@@ -8,7 +8,7 @@
 	import { expand } from './custom-transitions.js'
 	
 	// In milliseconds
-	const timer = 4 * 1000
+	const timer = 6 * 1000
 	let start
 	
 	function starttimer() {
