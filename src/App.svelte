@@ -79,13 +79,13 @@ const timer = 4 * 1000;
 	.timer-value {
     position: absolute;
     display: flex;
-    mix-blend-mode: difference;
+    /* mix-blend-mode: difference; */
     color: #999;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    line-height: 54px;
-    font-size: 94px;
+    /* line-height: 54px; */
+    font-size: 194px;
     height: 100vh;
     width: 100vw;
   }
@@ -137,7 +137,7 @@ const timer = 4 * 1000;
 	{#if toWait}
 		<div out:fly={{y: -20, duration: 1000}} class="timer-value">
 			
-			<span style="font-weight:800; color:white !important">{seconds}s</span>
+			<span style="font-weight:800; color:red">{seconds}s</span>
 		</div>
 	{:else}
 		<div class="centered">
