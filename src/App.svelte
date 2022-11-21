@@ -43,9 +43,7 @@ const timer = 4 * 1000;
   
 </script>
 
-<!-- Listen for Key down to start timer -->
 
-	<svelte:window on:keydown={starttimer}/>
 
   
 <style>
@@ -98,13 +96,13 @@ const timer = 4 * 1000;
   }
 	
 	.centered {
-		font-size: 30vw;
+		font-size: 50vw;
 		position: absolute;
 		left: 50%;
 		top: 50%;
 		transform: translate(-50%,-50%);
 		font-family: 'helvetica';
-		letter-spacing: 0.12em;
+		/* letter-spacing: 0.12em; */
 		color: green;
 		font-weight: 800;
 	}
@@ -113,6 +111,11 @@ const timer = 4 * 1000;
 		will-change: filter;
 	}
 </style>
+
+<!-- Listen for Key down to start timer -->
+
+<svelte:window on:keydown={starttimer}/>
+
 
 <div class="app">
   <svg align="center" width="100" height="100" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -10 225 105">
@@ -134,7 +137,7 @@ const timer = 4 * 1000;
 	{#if toWait}
 		<div out:fly={{y: -20, duration: 1000}} class="timer-value">
 			
-			<span>{seconds}s</span>
+			<span style="font-weight:800; color:white !important">{seconds}s</span>
 		</div>
 	{:else}
 		<div class="centered">
