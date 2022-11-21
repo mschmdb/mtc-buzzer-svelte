@@ -1,18 +1,25 @@
 <script>
 	import { quintOut } from 'svelte/easing'
 	import { fade, draw, fly } from 'svelte/transition'
-	import { readable } from 'svelte/store'
+	import { readable, writable } from 'svelte/store'
 	import { onMount } from 'svelte'
 	import { inner, outer } from './shape.js'
 	import test from './test'
 	import { expand } from './custom-transitions.js'
+  
+
+
 	
 	// In milliseconds
-	const timer = 6 * 1000
+const timer = 4 * 1000;
+
+  console.log(timer)
+  
 	let start
 	
 	function starttimer() {
 		start = new Date().getTime()
+    console.log('timer in starttimer', timer)
 	}; 
 
 	$: time = $mstime - start
@@ -32,8 +39,15 @@
 			return () => cancelAnimationFrame(animationFrame)
 		}
 	})
+
+  
 </script>
+
+<!-- Listen for Key down to start timer -->
+
 	<svelte:window on:keydown={starttimer}/>
+
+  
 <style>
 	:global(body) {
     color: #333;
@@ -56,6 +70,7 @@
 		width: 100%;
 		height: 100%;
 		opacity: 0.2;
+   
 	}
 	
 	path {
@@ -78,12 +93,12 @@
   }
 	
   .timer-value small {
-    font-size: 23px;
-    font-weight: 400;
+    font-size: 80vw;
+    font-weight: 800;
   }
 	
 	.centered {
-		font-size: 20vw;
+		font-size: 30vw;
 		position: absolute;
 		left: 50%;
 		top: 50%;
@@ -102,15 +117,16 @@
 <div class="app">
   <svg align="center" width="100" height="100" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -10 225 105">
 		{#if !toWait}
-			<path
-				in:expand="{{duration: 400, delay: 1000, easing: quintOut}}"
-				style="stroke: #890c58; fill: #890c58; stroke-width: 1.5;"
-				d={outer}
-			/>
+   
+    <path
+    in:expand="{{duration: 400, delay: 1000, easing: quintOut}}"
+    style="stroke:green; stroke-width:20"
+    d={outer}
+  />
 		{/if}
 		<path
 			use:test={progress}
-			style="stroke:#890c58; stroke-width: 1.5"
+			style="stroke:#890c58;  stroke-width: 1.5"
 			d={inner}
 		/>
 	</svg>
@@ -126,7 +142,9 @@
 				<span
 					in:fade="{{delay: 1000 + i * 150, duration: 800}}"
 				>{char}</span>
+       
 			{/each}
 		</div>
+   
 	{/if}
 </div>
