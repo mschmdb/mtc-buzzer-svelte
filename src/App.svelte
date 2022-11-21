@@ -115,7 +115,7 @@ const timer = 4 * 1000;
 <!-- Listen for Key down to start timer -->
 
 <svelte:window on:keydown={starttimer}/>
-
+<title>mtc buzzer on svelte</title>
 
 <div class="app">
   <svg align="center" width="100" height="100" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -10 225 105">
